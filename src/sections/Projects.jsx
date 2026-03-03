@@ -73,9 +73,9 @@ export default function Projects() {
   const filtered = active === 'All' ? projects : projects.filter(p => p.category === active)
 
   return (
-    <section id="projects" className="relative">
+    <section id="projects" className="relative overflow-hidden">
       {/* Background */}
-      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full bg-purple-600/5 blur-[120px]" />
+      <div className="absolute top-1/2 right-0 w-[250px] h-[250px] md:w-[500px] md:h-[500px] rounded-full bg-purple-600/5 blur-[120px]" />
 
       <div ref={ref} className={`section-container reveal ${visible ? 'visible' : ''}`}>
         {/* Section Header */}

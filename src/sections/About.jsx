@@ -11,9 +11,9 @@ export default function About() {
   const [ref, visible] = useScrollReveal();
 
   return (
-    <section id="about" className="relative py-10">
+    <section id="about" className="relative py-10 overflow-hidden">
       {/* Background accent */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-purple-600/5 blur-[100px]" />
+      <div className="absolute top-0 right-0 w-[200px] h-[200px] md:w-[400px] md:h-[400px] rounded-full bg-purple-600/5 blur-[100px]" />
 
       <div
         ref={ref}
@@ -68,10 +68,10 @@ export default function About() {
                 />
               </div>
               {/* Floating badges */}
-              <div className="absolute -top-2 -right-6 glass px-4 py-2 rounded-xl animate-float text-sm font-medium text-[var(--color-accent-cyan)] shadow-lg shadow-cyan-500/10">
+              <div className="absolute -top-2 right-0 md:-right-6 glass px-3 py-1.5 md:px-4 md:py-2 rounded-xl animate-float text-xs md:text-sm font-medium text-[var(--color-accent-cyan)] shadow-lg shadow-cyan-500/10">
                 ⚡ Fast Learner
               </div>
-              <div className="absolute -bottom-2 -left-6 glass px-4 py-2 rounded-xl animate-float-delayed text-sm font-medium text-[var(--color-accent-purple)] shadow-lg shadow-purple-500/10">
+              <div className="absolute -bottom-2 left-0 md:-left-6 glass px-3 py-1.5 md:px-4 md:py-2 rounded-xl animate-float-delayed text-xs md:text-sm font-medium text-[var(--color-accent-purple)] shadow-lg shadow-purple-500/10">
                 🎯 Detail Oriented
               </div>
             </div>

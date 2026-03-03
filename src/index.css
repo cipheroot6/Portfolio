@@ -346,7 +346,7 @@ a, button, input, textarea {
 /* === Mobile Responsiveness === */
 @media (max-width: 768px) {
   .section-container {
-    padding: 4rem 1rem;
+    padding: 3rem 1rem;
   }
 
   .cursor-dot,
@@ -357,5 +357,59 @@ a, button, input, textarea {
 
   html, body, a, button, input, textarea {
     cursor: auto;
+  }
+
+  /* Fix mix-blend-mode color inversion on mobile */
+  .cursor-dot,
+  .cursor-ring,
+  .cursor-trail {
+    mix-blend-mode: normal !important;
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+
+  .section-desc {
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  /* Buttons */
+  .btn-primary,
+  .btn-outline {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  /* Glass effects - ensure proper rendering */
+  .glass {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glass-strong {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+}
+
+/* Small mobile (< 480px) */
+@media (max-width: 480px) {
+  .section-container {
+    padding: 2.5rem 0.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+  }
+
+  .section-desc {
+    font-size: 0.9rem;
   }
 }

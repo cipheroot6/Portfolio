@@ -87,9 +87,9 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative">
+    <section id="contact" className="relative overflow-hidden">
       {/* Background */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-purple-600/5 blur-[120px]" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full bg-purple-600/5 blur-[120px]" />
 
       <div
         ref={ref}
@@ -126,7 +126,7 @@ export default function Contact() {
           {/* Contact Form */}
           <form
             onSubmit={handleSubmit}
-            className="w-full glass-strong rounded-2xl p-8 mb-10"
+            className="w-full glass-strong rounded-2xl p-5 sm:p-8 mb-10"
           >
             <div className="space-y-6">
               <div>
@@ -208,7 +208,7 @@ export default function Contact() {
           </form>
 
           {/* Quick Contact Info */}
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full">
             {contactInfo.map((info) =>
               info.href ? (
                 <a

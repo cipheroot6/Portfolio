@@ -57,9 +57,9 @@ export default function Skills() {
   const [ref, visible] = useScrollReveal();
 
   return (
-    <section id="skills" className="relative">
+    <section id="skills" className="relative overflow-hidden">
       {/* Background accent */}
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-cyan-600/5 blur-[120px]" />
+      <div className="absolute bottom-0 left-0 w-[250px] h-[250px] md:w-[500px] md:h-[500px] rounded-full bg-cyan-600/5 blur-[120px]" />
 
       <div
         ref={ref}

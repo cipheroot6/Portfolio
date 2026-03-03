@@ -135,9 +135,10 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 glass-strong transition-all duration-500 overflow-hidden ${
-          mobileOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+        className={`md:hidden absolute top-full left-0 right-0 mt-2 rounded-2xl glass-strong border transition-all duration-500 overflow-hidden ${
+          mobileOpen ? "max-h-[400px] opacity-100 border-white/[0.08]" : "max-h-0 opacity-0 border-transparent"
         }`}
+        style={{ backgroundColor: 'rgba(10, 10, 26, 0.85)' }}
       >
         <div className="px-6 py-4 flex flex-col gap-1">
           {navLinks.map((link) => (

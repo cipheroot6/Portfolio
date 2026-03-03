@@ -25,8 +25,8 @@ export default function LearningPath() {
   const [ref, visible] = useScrollReveal();
 
   return (
-    <section id="LearningPath" className="relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-blue-600/5 blur-[120px]" />
+    <section id="LearningPath" className="relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full bg-blue-600/5 blur-[120px]" />
 
       <div
         ref={ref}

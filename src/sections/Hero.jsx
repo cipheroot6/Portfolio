@@ -61,18 +61,18 @@ export default function Hero() {
       {/* Animated background blobs */}
       <div className="absolute inset-0 overflow-hidden">
         <div
-          className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-purple-600/20 animate-pulse-glow"
+          className="absolute top-1/4 -left-32 w-[250px] h-[250px] md:w-[500px] md:h-[500px] rounded-full bg-purple-600/20 animate-pulse-glow"
           style={{ transform: `translate(${mousePos.x * 20}px, ${mousePos.y * 20}px)` }}
         />
         <div
-          className="absolute bottom-1/4 -right-32 w-[400px] h-[400px] rounded-full bg-cyan-500/15 animate-pulse-glow"
+          className="absolute bottom-1/4 -right-32 w-[200px] h-[200px] md:w-[400px] md:h-[400px] rounded-full bg-cyan-500/15 animate-pulse-glow"
           style={{
             animationDelay: '1.5s',
             transform: `translate(${mousePos.x * -15}px, ${mousePos.y * -15}px)`,
           }}
         />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-pink-500/10 animate-pulse-glow"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full bg-pink-500/10 animate-pulse-glow"
           style={{
             animationDelay: '3s',
             transform: `translate(calc(-50% + ${mousePos.x * 10}px), calc(-50% + ${mousePos.y * 10}px))`,
@@ -116,7 +116,7 @@ export default function Hero() {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 w-full max-w-[850px] mx-auto animate-fade-in">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 md:px-6 w-full max-w-[850px] mx-auto animate-fade-in">
         {/* Status badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 animate-slide-down">
           <span className="relative flex h-2.5 w-2.5">
@@ -129,8 +129,8 @@ export default function Hero() {
         </div>
 
         {/* Heading */}
-        <div className="min-h-[160px] sm:min-h-[180px] md:min-h-[220px] flex flex-col items-center justify-center mb-6 w-full">
-          <h1 className="font-[var(--font-outfit)] text-[clamp(2.5rem,7vw,5rem)] font-extrabold leading-[1.1] tracking-tight w-full flex flex-col items-center justify-center">
+        <div className="min-h-[120px] sm:min-h-[160px] md:min-h-[220px] flex flex-col items-center justify-center mb-6 w-full">
+          <h1 className="font-[var(--font-outfit)] text-[clamp(2rem,6vw,5rem)] font-extrabold leading-[1.1] tracking-tight w-full flex flex-col items-center justify-center">
             <span className="block text-white mb-2">Hi, I'm a</span>
             <span className="inline-flex items-center justify-center flex-wrap text-center">
               <span className="gradient-text glow-text">{text}</span>
