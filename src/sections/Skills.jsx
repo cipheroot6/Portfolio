@@ -92,6 +92,8 @@ export default function Skills() {
           </p>
         </div>
 
+        <br />
+
         {/* Category Tabs */}
         <div className="flex flex-wrap justify-center items-center gap-3 mb-12 w-full mx-auto">
           {categories.map((cat, i) => (
@@ -99,7 +101,7 @@ export default function Skills() {
               key={cat.name}
               data-hover
               onClick={() => setActiveCategory(i)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-lg font-medium transition-all duration-300 ${
                 activeCategory === i
                   ? "glass-strong text-white shadow-lg shadow-purple-500/10"
                   : "text-[var(--color-text-muted)] hover:text-white hover:bg-white/5"
@@ -110,6 +112,8 @@ export default function Skills() {
             </button>
           ))}
         </div>
+
+        <br />
 
         {/* Skills Grid */}
         <div className="grid md:grid-cols-2 gap-4 max-w-[800px] w-full mx-auto">
@@ -140,11 +144,17 @@ export default function Skills() {
           ))}
         </div>
 
+        <br />
+        <br />
+        <br />
+
         {/* Additional tools row */}
         <div className="mt-12 text-center">
           <p className="text-sm text-[var(--color-text-muted)] mb-4">
             Also experienced with
           </p>
+
+          <br />
           <div className="flex flex-wrap justify-center gap-2">
             {[
               "Resend",

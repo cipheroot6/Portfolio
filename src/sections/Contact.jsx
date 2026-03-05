@@ -122,6 +122,8 @@ export default function Contact() {
           </p>
         </div>
 
+        <br />
+
         <div className="max-w-[800px] w-full mx-auto flex flex-col items-center">
           {/* Contact Form */}
           <form
@@ -206,6 +208,9 @@ export default function Contact() {
               </button>
             </div>
           </form>
+
+          <br />
+          <br />
 
           {/* Quick Contact Info */}
           <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full">

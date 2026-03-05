@@ -94,6 +94,9 @@ export default function About() {
               solutions that users enjoy.
             </p>
 
+            <br />
+            <br />
+
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-[800px] mx-auto">
               {stats.map((stat) => (
