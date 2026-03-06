@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
-const filters = ["All  ", "Full Stack  ", "Backend  "];
+const filters = ["All", "Full Stack", "Backend"];
 
 const projects = [
   {
@@ -26,14 +26,15 @@ const projects = [
     live: "https://session-manager-app.vercel.app/",
   },
   {
-    title: "Portfolio Dashboard",
-    desc: "Analytics dashboard with interactive charts, data visualization, and customizable widgets.",
-    tags: ["React", "D3.js", "Tailwind", "Vite"],
+    title: "Ai Interview App",
+    desc: "An AI-powered job interview platform with powered by Vapi AI voice agent and detailed feedback from AI to help you ace your job interview.",
+    tags: ["Next.js", "VAPI", "Tailwind", "Firebase"],
     category: "Full Stack",
     gradient: "from-emerald-500/20 to-cyan-500/20",
-    icon: "📊",
-    github: "#",
-    live: "#",
+    icon: "💼",
+    // icon: "📊",
+    github: "https://github.com/cipheroot6/ai-interview",
+    live: "https://ai-interview-cipheroot6s-projects.vercel.app",
   },
   {
     title: "Subscription Tracking API",
