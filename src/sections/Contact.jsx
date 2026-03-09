@@ -79,11 +79,13 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSending(true);
     const subject = encodeURIComponent(`Message from ${formData.name}`);
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
     );
     window.location.href = `mailto:cipheroot@proton.me?subject=${subject}&body=${body}`;
+    setTimeout(() => setSending(false), 2000);
   };
 
   return (
@@ -188,23 +190,30 @@ export default function Contact() {
               <button
                 type="submit"
                 data-hover
-                className="w-full btn-primary justify-center py-4 text-base mt-2"
+                disabled={sending}
+                className="w-full btn-primary justify-center py-4 text-base mt-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                <span>Send Message</span>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="relative z-10"
-                >
-                  <path d="m22 2-7 20-4-9-9-4z" />
-                  <path d="M22 2 11 13" />
-                </svg>
+                <span>{sending ? "Opening Mail..." : "Send Message"}</span>
+                {sending ? (
+                  <svg className="animate-spin relative z-10" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                  </svg>
+                ) : (
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="relative z-10"
+                  >
+                    <path d="m22 2-7 20-4-9-9-4z" />
+                    <path d="M22 2 11 13" />
+                  </svg>
+                )}
               </button>
             </div>
           </form>

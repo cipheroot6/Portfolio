@@ -4,7 +4,7 @@ const stats = [
   { value: "6+", label: "Months of Experience" },
   { value: "5+", label: "Projects Completed" },
   { value: "2+", label: "Satisfied Clients" },
-  { value: "99%", label: "Code Quality" },
+  { value: "99%", label: "Client Satisfaction" },
 ];
 
 export default function About() {
@@ -53,7 +53,7 @@ export default function About() {
                 {/* Abstract developer visual */}
                 <img
                   src="/profile.jpg"
-                  alt="Your Name"
+                  alt="Shreyas — Full Stack Developer"
                   className="w-full h-full object-cover"
                 />
                 {/* Shimmer effect */}

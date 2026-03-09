@@ -65,9 +65,6 @@ export default function LearningPath() {
               className="glass rounded-xl p-8 flex flex-col items-center text-center group hover:bg-white/[0.06] transition-all duration-300 hover:-translate-y-1"
               style={{ transitionDelay: `${i * 0.15}s` }}
             >
-              <span className="inline-block text-xs font-mono text-[var(--color-accent-cyan)] mb-3">
-                {edu.period}
-              </span>
               <h3 className="text-xl font-semibold font-[var(--font-outfit)] text-white mb-2">
                 {edu.degree}
               </h3>

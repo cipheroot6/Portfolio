@@ -1,4 +1,3 @@
-import { BrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import CustomCursor from "./components/CustomCursor";
 import Footer from "./components/Footer";
@@ -11,7 +10,7 @@ import LearningPath from "./sections/LearningPath";
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
       <CustomCursor />
       <Navbar />
       <main className="w-full text-center">
@@ -23,7 +22,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
-    </BrowserRouter>
+    </>
   );
 }
 

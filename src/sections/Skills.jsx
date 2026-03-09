@@ -127,7 +127,7 @@ export default function Skills() {
 
         {/* Skills Grid */}
         <div className="grid md:grid-cols-2 gap-4 max-w-[800px] w-full mx-auto">
-          {categories[activeCategory].skills.map((skill, i) => (
+          {categories[activeCategory].skills.filter(skill => skill.level > 0).map((skill, i) => (
             <div
               key={skill.name}
               className="glass rounded-xl p-6 flex flex-col items-center justify-center text-center group hover:bg-white/[0.06] transition-all duration-300 hover:-translate-y-0.5"
