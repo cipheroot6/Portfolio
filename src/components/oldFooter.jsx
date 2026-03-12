@@ -49,82 +49,9 @@ const socials = [
   },
 ];
 
-const quotes = [
-  {
-    text: "programs must be written for people to read, and only incidentally for machines to execute.",
-    author: "harold abelson",
-  },
-  {
-    text: "talk is cheap. show me the code.",
-    author: "linus torvalds",
-  },
-  {
-    text: "any fool can write code that a computer can understand. good programmers write code that humans can understand.",
-    author: "martin fowler",
-  },
-  {
-    text: "first, solve the problem. then, write the code.",
-    author: "john johnson",
-  },
-  {
-    text: "simplicity is the soul of efficiency.",
-    author: "austin freeman",
-  },
-  {
-    text: "make it work, make it right, make it fast.",
-    author: "kent beck",
-  },
-  {
-    text: "code is like humor. when you have to explain it, it's bad.",
-    author: "cory house",
-  },
-  {
-    text: "the best code is no code at all.",
-    author: "jeff atwood",
-  },
-  {
-    text: "walking on water and developing software from a specification are easy if both are frozen.",
-    author: "edward v berard",
-  },
-  {
-    text: "deleted code is debugged code.",
-    author: "jeff sickel",
-  },
-];
-
-function useTypewriter(text, speed = 38) {
-  const [displayed, setDisplayed] = useState("");
-  const [done, setDone] = useState(false);
-  useEffect(() => {
-    setDisplayed("");
-    setDone(false);
-    let i = 0;
-    const interval = setInterval(() => {
-      i++;
-      setDisplayed(text.slice(0, i));
-      if (i >= text.length) {
-        clearInterval(interval);
-        setDone(true);
-      }
-    }, speed);
-    return () => clearInterval(interval);
-  }, [text]);
-  return { displayed, done };
-}
-
 export default function Footer() {
   const [visible, setVisible] = useState(false);
-  const [quoteIndex, setQuoteIndex] = useState(0);
   const ref = useRef(null);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setQuoteIndex((i) => (i + 1) % quotes.length);
-    }, 10000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const { displayed, done } = useTypewriter(quotes[quoteIndex].text, 38);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -169,7 +96,7 @@ export default function Footer() {
           position: relative;
           z-index: 1;
           width: 100%;
-          padding: 12px 80px 10px;
+          padding: 20px 80px 14px;
           box-sizing: border-box;
         }
 
@@ -200,13 +127,8 @@ export default function Footer() {
         }
 
         @media (max-width: 640px) {
-          .footer-grid { flex-direction: column; gap: 16px; align-items: center; }
-          .footer-inner { padding: 16px 24px 12px; text-align: center; }
-          .footer-brand { display: flex; flex-direction: column; align-items: center; }
-          .footer-logo { display: none; }
-          .footer-quote-block { text-align: center; }
-          .footer-socials-row { justify-content: center; }
-          .footer-socials-label { text-align: center !important; }
+          .footer-grid { flex-direction: column; gap: 20px; }
+          .footer-inner { padding: 24px 24px 16px; }
         }
 
         .footer-logo {
@@ -232,39 +154,12 @@ export default function Footer() {
           color: #ffffff;
         }
 
-        .footer-quote-block {
-          max-width: 280px;
-        }
-
-        .footer-quote-text {
+        .footer-tagline {
           font-family: 'DM Mono', monospace;
           font-size: 12px;
-          color: rgba(255,255,255,0.5);
+          color: rgba(255,255,255,0.3);
           line-height: 1.7;
-          min-height: 38px;
-        }
-
-        .footer-quote-cursor {
-          display: inline-block;
-          width: 1px;
-          height: 11px;
-          background: rgba(0,255,163,0.7);
-          margin-left: 2px;
-          animation: blink 1s step-end infinite;
-          vertical-align: middle;
-        }
-
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
-
-        .footer-quote-author {
-          font-family: 'DM Mono', monospace;
-          font-size: 10px;
-          color: rgba(0,255,163,0.45);
-          margin-top: 6px;
-          letter-spacing: 0.05em;
+          max-width: 280px;
         }
 
         .footer-socials-label {
@@ -273,27 +168,20 @@ export default function Footer() {
           letter-spacing: 0.18em;
           text-transform: uppercase;
           color: rgba(255,255,255,0.2);
-          margin-bottom: 10px;
+          margin-bottom: 16px;
         }
 
         .footer-socials {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-        }
-
-        .footer-socials-row {
-          display: flex;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
           gap: 8px;
         }
 
         .footer-social-link {
           display: inline-flex;
           align-items: center;
-          justify-content: center;
           gap: 10px;
-          padding: 8px 0;
-          width: 110px;
+          padding: 8px 12px;
           border: 1px solid rgba(255,255,255,0.06);
           border-radius: 8px;
           color: rgba(255,255,255,0.4);
@@ -318,12 +206,14 @@ export default function Footer() {
         .footer-bottom {
           position: relative;
           z-index: 1;
-          margin-top: 12px;
+          margin-top: 14px;
           padding-top: 10px;
           border-top: 1px solid rgba(255,255,255,0.05);
           display: flex;
           align-items: center;
           justify-content: center;
+          flex-wrap: wrap;
+          gap: 12px;
         }
 
         .footer-made {
@@ -333,7 +223,6 @@ export default function Footer() {
           display: flex;
           align-items: center;
           gap: 6px;
-          margin: 0 auto;
         }
 
         .footer-made .heart {
@@ -373,6 +262,7 @@ export default function Footer() {
             {/* Brand — left */}
             <div
               className={`footer-brand footer-reveal ${visible ? "visible" : ""}`}
+              style={{ textAlign: "left" }}
             >
               <a href="#home" className="footer-logo" data-hover>
                 <span className="bracket">&lt;</span>
@@ -380,17 +270,11 @@ export default function Footer() {
                 <span className="bracket">/&gt;</span>
               </a>
 
-              <div className="footer-quote-block">
-                <div className="footer-quote-text">
-                  "{displayed}
-                  {!done && <span className="footer-quote-cursor" />}"
-                </div>
-                {done && (
-                  <div className="footer-quote-author">
-                    — {quotes[quoteIndex].author}
-                  </div>
-                )}
-              </div>
+              <p className="footer-tagline">
+                turning ideas into web products.
+              </p>
+
+
             </div>
 
             {/* Socials — right */}
@@ -402,48 +286,30 @@ export default function Footer() {
                 className="footer-socials-label"
                 style={{ textAlign: "right" }}
               >
-                CONNECT
+                Connect
               </div>
               <div className="footer-socials">
-                <div className="footer-socials-row">
-                  {socials.slice(0, 2).map((s) => (
-                    <a
-                      key={s.label}
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="footer-social-link"
-                      aria-label={s.label}
-                      data-hover
-                    >
-                      {s.icon}
-                      {s.label}
-                    </a>
-                  ))}
-                </div>
-                <div className="footer-socials-row">
-                  {socials.slice(2).map((s) => (
-                    <a
-                      key={s.label}
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="footer-social-link"
-                      aria-label={s.label}
-                      data-hover
-                    >
-                      {s.icon}
-                      {s.label}
-                    </a>
-                  ))}
-                </div>
+                {socials.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="footer-social-link"
+                    aria-label={s.label}
+                    data-hover
+                  >
+                    {s.icon}
+                    {s.label}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
 
           <div className="footer-bottom">
-            <p className="footer-made">
-              built with <span className="heart">♥</span> {" "} tailwind &amp; coffee
+            <p className="footer-made" style={{ margin: "0 auto" }}>
+              built with <span className="heart">♥</span> react &amp; tailwind
             </p>
           </div>
         </div>
