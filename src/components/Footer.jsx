@@ -151,9 +151,9 @@ export default function Footer() {
           background: linear-gradient(90deg, transparent, rgba(168,85,247,0.4) 40%, rgba(6,182,212,0.4) 60%, transparent);
         }
         .f-inner {
-          max-width: 1200px;
+          max-width: 1600px;
           margin: 0 auto;
-          padding: 2rem 1.5rem 1.25rem;
+          padding: 1.25rem 1.5rem 0.75rem;
           box-sizing: border-box;
           position: relative;
           z-index: 1;
@@ -169,7 +169,7 @@ export default function Footer() {
           font-weight: 800;
           font-size: clamp(56px, 10vw, 110px);
           color: transparent;
-          -webkit-text-stroke: 1px rgba(255,255,255,0.025);
+          -webkit-text-stroke: 1px rgba(255,255,255,0.06);
           letter-spacing: -0.02em;
           pointer-events: none;
           user-select: none;
@@ -190,19 +190,24 @@ export default function Footer() {
           position: relative;
           z-index: 2;
           text-align: center;
-          margin-bottom: 1.25rem;
+          margin-bottom: 0.75rem;
         }
         .f-logo {
           font-family: 'Outfit', sans-serif;
           font-weight: 800;
-          font-size: 1.2rem;
+          font-size: 1.9rem;
           letter-spacing: 0.08em;
           text-decoration: none;
           display: inline-flex;
           align-items: center;
         }
         /* LEFT */
-        .f-left { display: flex; flex-direction: column; text-align: left; }
+        .f-left {
+          display: flex;
+          flex-direction: column;
+          text-align: left;
+          gap: 0;
+        }
         .f-logo .br {
           background: linear-gradient(135deg, #a855f7, #06b6d4);
           -webkit-background-clip: text;
@@ -212,23 +217,27 @@ export default function Footer() {
         .f-logo .nm { color: #f1f5f9; }
         /* quote box */
         .f-quote-box {
-          width: 360px;
+          width: 420px;
           max-width: 100%;
-          min-height: 42px;
           overflow: hidden;
           position: relative;
           text-align: left;
+          display: flex;
+          flex-direction: column;
         }
         .f-quote-text {
-          font-size: 0.82rem;
+          font-size: 0.95rem;
           color: rgba(241,245,249,0.35);
           line-height: 1.65;
           font-style: italic;
+          margin: 0;
+          padding: 0;
+          align-self: flex-start;
         }
         .f-cursor {
           display: inline-block;
-          width: 1.5px; height: 11px;
-          background: #06b6d4;
+          width: 1.5px; height: 13px;
+          background: #a855f7;
           margin-left: 1px;
           vertical-align: middle;
           border-radius: 1px;
@@ -236,11 +245,11 @@ export default function Footer() {
         }
         @keyframes fcblink { 0%,100%{opacity:1} 50%{opacity:0} }
         .f-author {
-          margin-top: 6px;
-          font-size: 0.74rem;
+          margin: 6px 0 0 0;
+          padding: 0;
+          font-size: 0.88rem;
           color: rgba(168,85,247,0.65);
           letter-spacing: 0.03em;
-          transition: opacity 0.35s ease;
         }
         /* RIGHT */
         .f-right {
@@ -250,7 +259,7 @@ export default function Footer() {
           flex-shrink: 0;
         }
         .f-connect {
-          font-size: 0.68rem;
+          font-size: 0.8rem;
           font-weight: 600;
           letter-spacing: 0.22em;
           text-transform: uppercase;
@@ -259,7 +268,7 @@ export default function Footer() {
         }
         .f-links {
           display: grid;
-          grid-template-columns: repeat(2, 112px);
+          grid-template-columns: repeat(2, 120px);
           gap: 8px;
         }
         .f-link {
@@ -273,7 +282,7 @@ export default function Footer() {
           background: rgba(255,255,255,0.03);
           color: rgba(241,245,249,0.45);
           text-decoration: none;
-          font-size: 0.82rem;
+          font-size: 0.92rem;
           font-weight: 500;
           transition: all 0.22s ease;
         }
@@ -289,11 +298,11 @@ export default function Footer() {
         .f-bottom {
           position: relative;
           z-index: 1;
-          margin-top: 1.5rem;
-          padding-top: 0.9rem;
+          margin-top: 0.75rem;
+          padding-top: 0.6rem;
           border-top: 1px solid rgba(255,255,255,0.05);
           text-align: center;
-          font-size: 0.78rem;
+          font-size: 0.88rem;
           color: rgba(241,245,249,0.16);
           display: flex;
           align-items: center;
@@ -312,21 +321,21 @@ export default function Footer() {
         .f-reveal:nth-child(3) { transition-delay:.18s }
         /* mobile */
         @media(max-width:640px){
-          .f-inner { padding: 1.5rem 1.25rem 1rem; }
-          .f-logo-wrap { margin-bottom: 1rem; }
-          .f-logo { font-size: 1rem; }
+          .f-inner { padding: 1rem 1rem 0.75rem; }
+          .f-logo-wrap { margin-bottom: 0.6rem; }
+          .f-logo { font-size: 1.35rem; }
           .f-row { flex-direction:column; align-items:center; gap:1.25rem; }
           .f-left { align-items: center; }
-          .f-quote-box { width: 100%; min-height: 36px; text-align: center; }
-          .f-quote-text { font-size: 0.78rem; line-height: 1.55; }
-          .f-author { font-size: 0.7rem; margin-top: 4px; text-align: center; }
-          .f-watermark { font-size: clamp(40px, 18vw, 60px); }
+          .f-quote-box { width: 100%; text-align: center; }
+          .f-quote-text { font-size: 0.88rem; line-height: 1.55; align-self: center; }
+          .f-author { font-size: 0.82rem; margin-top: 4px; text-align: center; }
+          .f-watermark { display: none; }
           .f-right { align-items: center; width: 100%; }
-          .f-connect { font-size: 0.62rem; margin-bottom: 8px; }
+          .f-connect { font-size: 0.72rem; margin-bottom: 8px; }
           .f-links { grid-template-columns: repeat(4, 1fr); width: 100%; gap: 6px; }
-          .f-link { padding: 8px 4px; font-size: 0.72rem; gap: 4px; }
+          .f-link { padding: 8px 4px; font-size: 0.82rem; gap: 4px; }
           .f-link svg { width: 13px; height: 13px; }
-          .f-bottom { margin-top: 1rem; padding-top: 0.75rem; font-size: 0.72rem; }
+          .f-bottom { margin-top: 0.6rem; padding-top: 0.5rem; font-size: 0.82rem; }
         }
         /* small mobile */
         @media(max-width:380px){
@@ -337,7 +346,9 @@ export default function Footer() {
       <footer className="f-root" ref={ref}>
         <div className="f-topline" />
         <div className="f-inner">
-          <div className="f-watermark" aria-hidden="true">CIPHEROOT</div>
+          <div className="f-watermark" aria-hidden="true">
+            CIPHEROOT
+          </div>
 
           {/* LOGO — centered */}
           <div className={`f-logo-wrap f-reveal ${visible ? "in" : ""}`}>
@@ -353,12 +364,13 @@ export default function Footer() {
             <div className={`f-left f-reveal ${visible ? "in" : ""}`}>
               <div className="f-quote-box">
                 <p className="f-quote-text">
-                  "{displayed}{!done && <span className="f-cursor" />}"
+                  "{displayed}
+                  {!done && <span className="f-cursor" />}"
                 </p>
+                {done && (
+                  <p className="f-author">— {quotes[quoteIndex].author}</p>
+                )}
               </div>
-              <p className="f-author" style={{ opacity: done ? 1 : 0 }}>
-                — {quotes[quoteIndex].author}
-              </p>
             </div>
 
             {/* RIGHT */}
@@ -366,10 +378,17 @@ export default function Footer() {
               <span className="f-connect">Connect</span>
               <div className="f-links">
                 {socials.map((s) => (
-                  <a key={s.label} href={s.href} target="_blank"
-                    rel="noopener noreferrer" className="f-link"
-                    aria-label={s.label} data-hover>
-                    {s.icon}{s.label}
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="f-link"
+                    aria-label={s.label}
+                    data-hover
+                  >
+                    {s.icon}
+                    {s.label}
                   </a>
                 ))}
               </div>
