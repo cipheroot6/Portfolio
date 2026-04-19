@@ -1,11 +1,5 @@
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
-const stats = [
-  { value: "6+", label: "Months of Experience" },
-  { value: "5+", label: "Projects Completed" },
-  { value: "2+", label: "Satisfied Clients" },
-  { value: "99%", label: "Client Satisfaction" },
-];
 
 export default function About() {
   const [ref, visible] = useScrollReveal();
@@ -38,8 +32,8 @@ export default function About() {
             About Me
           </span>
           <h2 className="section-title">
-            Passionate about building <br />
-            <span className="gradient-text">exceptional web experiences</span>
+            Full Stack Developer &amp; <br />
+            <span className="gradient-text">Security Researcher</span>
           </h2>
         </div>
 
@@ -69,10 +63,10 @@ export default function About() {
               </div>
               {/* Floating badges */}
               <div className="absolute -top-2 right-0 md:-right-6 glass px-3 py-1.5 md:px-4 md:py-2 rounded-xl animate-float text-xs md:text-sm font-medium text-[var(--color-accent-cyan)] shadow-lg shadow-cyan-500/10">
-                ⚡ Fast Learner
+                🔐 CTF Competitor
               </div>
               <div className="absolute -bottom-2 left-0 md:-left-6 glass px-3 py-1.5 md:px-4 md:py-2 rounded-xl animate-float-delayed text-xs md:text-sm font-medium text-[var(--color-accent-purple)] shadow-lg shadow-purple-500/10">
-                🎯 Detail Oriented
+                ⚡ Full Stack Dev
               </div>
             </div>
           </div>
@@ -80,38 +74,21 @@ export default function About() {
           {/* Text Content */}
           <div className="w-full text-center flex flex-col items-center">
             <p className="text-[var(--color-text-secondary)] leading-relaxed mb-4 text-lg md:text-xl max-w-[700px]">
-              I'm a{" "}
-              <strong className="text-white">Full Stack Web Developer</strong>{" "}
-              with a passion for creating beautiful, performant, and
-              user-centric web applications. With over 6 months of experience, I
-              specialize in building end-to-end solutions from stunning
-              frontends to robust backend systems.
+              I'm a <strong className="text-white">Full Stack Developer</strong> and <strong className="text-white">security researcher</strong> who
+              builds production-grade web applications and breaks things apart to understand how they work.
+              Both skills feed each other more than most people expect.
             </p>
-            <p className="text-[var(--color-text-secondary)] leading-relaxed mb-10 text-lg md:text-xl max-w-[700px]">
-              My expertise spans across the modern web stack — from React and
-              Next.js on the frontend to Node.js, Python, and databases on the
-              backend. I love turning complex problems into elegant, scalable
-              solutions that users enjoy.
+            <p className="text-[var(--color-text-secondary)] leading-relaxed mb-4 text-lg md:text-xl max-w-[700px]">
+              On the web side, I specialize in React, Next.js, Node.js, and MongoDB — building everything
+              from real-time applications to SaaS dashboards with a focus on clean architecture and shipping
+              things that actually work. On the security side, I compete in CTFs with team NullPointers,
+              working across reverse engineering, cryptography, and forensics. I run Arch Linux with a
+              custom Hyprland setup because I like knowing exactly how my tools behave.
             </p>
-
-            <div className="h-8" />
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-[800px] mx-auto">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="glass rounded-xl p-5 text-center group hover:bg-white/[0.06] transition-all duration-300 hover:-translate-y-1"
-                >
-                  <div className="text-3xl font-bold font-[var(--font-outfit)] gradient-text mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs text-[var(--color-text-muted)] font-medium uppercase tracking-wider">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
+            <p className="text-[var(--color-text-secondary)] leading-relaxed text-lg md:text-xl max-w-[700px]">
+              I care about building things that are both functional and defensible —{" "}
+              <span className="text-white font-medium">good software shouldn't just work, it should be hard to break.</span>
+            </p>
           </div>
         </div>
       </div>

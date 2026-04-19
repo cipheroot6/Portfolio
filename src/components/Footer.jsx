@@ -140,311 +140,244 @@ export default function Footer() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@400;500&display=swap');
-
-        .footer-root {
-          position: relative;
-          margin-top: 80px;
+        .f-root {
           width: 100%;
-          background: #080809;
+          background: #0a0a1a;
+          font-family: 'Inter', sans-serif;
           overflow: hidden;
-          font-family: 'DM Mono', monospace;
         }
-
-        .footer-root::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-          pointer-events: none;
-          z-index: 0;
-        }
-
-        .footer-top-line {
+        .f-topline {
           height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(0,255,163,0.4) 30%, rgba(0,200,255,0.4) 70%, transparent);
+          background: linear-gradient(90deg, transparent, rgba(168,85,247,0.4) 40%, rgba(6,182,212,0.4) 60%, transparent);
         }
-
-        .footer-inner {
+        .f-inner {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 2rem 1.5rem 1.25rem;
+          box-sizing: border-box;
           position: relative;
           z-index: 1;
-          width: 100%;
-          padding: 12px 80px 10px;
-          box-sizing: border-box;
         }
-
-        .footer-wordmark {
+        /* ghost watermark */
+        .f-watermark {
           position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -52%);
-          font-family: 'Syne', sans-serif;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: 'Outfit', sans-serif;
           font-weight: 800;
-          font-size: clamp(40px, 8vw, 80px);
-          letter-spacing: -0.02em;
+          font-size: clamp(56px, 10vw, 110px);
           color: transparent;
-          -webkit-text-stroke: 1px rgba(255,255,255,0.03);
-          white-space: nowrap;
+          -webkit-text-stroke: 1px rgba(255,255,255,0.025);
+          letter-spacing: -0.02em;
           pointer-events: none;
           user-select: none;
+          white-space: nowrap;
           z-index: 0;
         }
-
-        .footer-grid {
+        /* ── main row ── */
+        .f-row {
           position: relative;
           z-index: 1;
           display: flex;
           align-items: flex-start;
           justify-content: space-between;
-          gap: 32px;
+          gap: 40px;
         }
-
-        @media (max-width: 640px) {
-          .footer-grid { flex-direction: column; gap: 16px; align-items: center; }
-          .footer-inner { padding: 16px 24px 12px; text-align: center; }
-          .footer-brand { display: flex; flex-direction: column; align-items: center; }
-          .footer-logo { display: none; }
-          .footer-quote-block { text-align: center; }
-          .footer-socials-row { justify-content: center; }
-          .footer-socials-label { text-align: center !important; }
+        /* LOGO — centered above row */
+        .f-logo-wrap {
+          position: relative;
+          z-index: 2;
+          text-align: center;
+          margin-bottom: 1.25rem;
         }
-
-        .footer-logo {
-          font-family: 'Syne', sans-serif;
+        .f-logo {
+          font-family: 'Outfit', sans-serif;
           font-weight: 800;
-          font-size: 22px;
+          font-size: 1.2rem;
           letter-spacing: 0.08em;
           text-decoration: none;
           display: inline-flex;
           align-items: center;
-          gap: 2px;
-          margin-bottom: 10px;
         }
-
-        .footer-logo .bracket {
-          background: linear-gradient(135deg, #00ffa3, #00c8ff);
+        /* LEFT */
+        .f-left { display: flex; flex-direction: column; text-align: left; }
+        .f-logo .br {
+          background: linear-gradient(135deg, #a855f7, #06b6d4);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
-
-        .footer-logo .name {
-          color: #ffffff;
+        .f-logo .nm { color: #f1f5f9; }
+        /* quote box */
+        .f-quote-box {
+          width: 360px;
+          max-width: 100%;
+          min-height: 42px;
+          overflow: hidden;
+          position: relative;
+          text-align: left;
         }
-
-        .footer-quote-block {
-          max-width: 280px;
+        .f-quote-text {
+          font-size: 0.82rem;
+          color: rgba(241,245,249,0.35);
+          line-height: 1.65;
+          font-style: italic;
         }
-
-        .footer-quote-text {
-          font-family: 'DM Mono', monospace;
-          font-size: 12px;
-          color: rgba(255,255,255,0.5);
-          line-height: 1.7;
-          min-height: 38px;
-        }
-
-        .footer-quote-cursor {
+        .f-cursor {
           display: inline-block;
-          width: 1px;
-          height: 11px;
-          background: rgba(0,255,163,0.7);
-          margin-left: 2px;
-          animation: blink 1s step-end infinite;
+          width: 1.5px; height: 11px;
+          background: #06b6d4;
+          margin-left: 1px;
           vertical-align: middle;
+          border-radius: 1px;
+          animation: fcblink 1s step-end infinite;
         }
-
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
-
-        .footer-quote-author {
-          font-family: 'DM Mono', monospace;
-          font-size: 10px;
-          color: rgba(0,255,163,0.45);
+        @keyframes fcblink { 0%,100%{opacity:1} 50%{opacity:0} }
+        .f-author {
           margin-top: 6px;
-          letter-spacing: 0.05em;
+          font-size: 0.74rem;
+          color: rgba(168,85,247,0.65);
+          letter-spacing: 0.03em;
+          transition: opacity 0.35s ease;
         }
-
-        .footer-socials-label {
-          font-family: 'DM Mono', monospace;
-          font-size: 10px;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: rgba(255,255,255,0.2);
-          margin-bottom: 10px;
-        }
-
-        .footer-socials {
+        /* RIGHT */
+        .f-right {
           display: flex;
           flex-direction: column;
+          align-items: flex-end;
+          flex-shrink: 0;
+        }
+        .f-connect {
+          font-size: 0.68rem;
+          font-weight: 600;
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
+          color: rgba(241,245,249,0.22);
+          margin-bottom: 10px;
+        }
+        .f-links {
+          display: grid;
+          grid-template-columns: repeat(2, 112px);
           gap: 8px;
         }
-
-        .footer-socials-row {
+        .f-link {
           display: flex;
-          gap: 8px;
-        }
-
-        .footer-social-link {
-          display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 10px;
+          gap: 7px;
           padding: 8px 0;
-          width: 110px;
-          border: 1px solid rgba(255,255,255,0.06);
           border-radius: 8px;
-          color: rgba(255,255,255,0.4);
+          border: 1px solid rgba(255,255,255,0.07);
+          background: rgba(255,255,255,0.03);
+          color: rgba(241,245,249,0.45);
           text-decoration: none;
-          font-size: 12px;
-          font-family: 'DM Mono', monospace;
-          transition: all 0.2s;
-          background: rgba(255,255,255,0.02);
+          font-size: 0.82rem;
+          font-weight: 500;
+          transition: all 0.22s ease;
         }
-
-        .footer-social-link:hover {
-          border-color: rgba(0,255,163,0.35);
-          color: #ffffff;
-          background: rgba(0,255,163,0.05);
-          transform: translateX(4px);
+        .f-link:hover {
+          border-color: rgba(168,85,247,0.35);
+          background: rgba(168,85,247,0.07);
+          color: #f1f5f9;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 14px rgba(168,85,247,0.12);
         }
-
-        .footer-social-link:hover svg {
-          color: #00ffa3;
-        }
-
-        .footer-bottom {
+        .f-link:hover svg { color: #a855f7; }
+        /* bottom */
+        .f-bottom {
           position: relative;
           z-index: 1;
-          margin-top: 12px;
-          padding-top: 10px;
+          margin-top: 1.5rem;
+          padding-top: 0.9rem;
           border-top: 1px solid rgba(255,255,255,0.05);
+          text-align: center;
+          font-size: 0.78rem;
+          color: rgba(241,245,249,0.16);
           display: flex;
           align-items: center;
           justify-content: center;
+          gap: 5px;
         }
-
-        .footer-made {
-          font-family: 'DM Mono', monospace;
-          font-size: 11px;
-          color: rgba(255,255,255,0.18);
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          margin: 0 auto;
+        .f-heart {
+          color: #ec4899;
+          animation: fhbeat 1.8s ease-in-out infinite;
         }
-
-        .footer-made .heart {
-          color: #ff5f7e;
-          animation: pulse-heart 1.8s ease-in-out infinite;
+        @keyframes fhbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.3)} }
+        /* reveal */
+        .f-reveal { opacity:0; transform:translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+        .f-reveal.in { opacity:1; transform:translateY(0); }
+        .f-reveal:nth-child(2) { transition-delay:.1s }
+        .f-reveal:nth-child(3) { transition-delay:.18s }
+        /* mobile */
+        @media(max-width:640px){
+          .f-inner { padding: 1.5rem 1.25rem 1rem; }
+          .f-logo-wrap { margin-bottom: 1rem; }
+          .f-logo { font-size: 1rem; }
+          .f-row { flex-direction:column; align-items:center; gap:1.25rem; }
+          .f-left { align-items: center; }
+          .f-quote-box { width: 100%; min-height: 36px; text-align: center; }
+          .f-quote-text { font-size: 0.78rem; line-height: 1.55; }
+          .f-author { font-size: 0.7rem; margin-top: 4px; text-align: center; }
+          .f-watermark { font-size: clamp(40px, 18vw, 60px); }
+          .f-right { align-items: center; width: 100%; }
+          .f-connect { font-size: 0.62rem; margin-bottom: 8px; }
+          .f-links { grid-template-columns: repeat(4, 1fr); width: 100%; gap: 6px; }
+          .f-link { padding: 8px 4px; font-size: 0.72rem; gap: 4px; }
+          .f-link svg { width: 13px; height: 13px; }
+          .f-bottom { margin-top: 1rem; padding-top: 0.75rem; font-size: 0.72rem; }
         }
-
-        @keyframes pulse-heart {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.25); }
+        /* small mobile */
+        @media(max-width:380px){
+          .f-links { grid-template-columns: repeat(2, 1fr); }
         }
-
-        .footer-reveal {
-          opacity: 0;
-          transform: translateY(20px);
-          transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .footer-reveal.visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .footer-reveal:nth-child(2) { transition-delay: 0.1s; }
-        .footer-reveal:nth-child(3) { transition-delay: 0.2s; }
       `}</style>
 
-      <footer className="footer-root" ref={ref}>
-        <div className="footer-top-line" />
+      <footer className="f-root" ref={ref}>
+        <div className="f-topline" />
+        <div className="f-inner">
+          <div className="f-watermark" aria-hidden="true">CIPHEROOT</div>
 
-        <div className="footer-inner">
-          <div className="footer-wordmark" aria-hidden="true">
-            CIPHEROOT
+          {/* LOGO — centered */}
+          <div className={`f-logo-wrap f-reveal ${visible ? "in" : ""}`}>
+            <a href="#home" className="f-logo" data-hover>
+              <span className="br">&lt;</span>
+              <span className="nm">CIPHEROOT</span>
+              <span className="br">/&gt;</span>
+            </a>
           </div>
 
-          <div className="footer-grid">
-            {/* Brand — left */}
-            <div
-              className={`footer-brand footer-reveal ${visible ? "visible" : ""}`}
-            >
-              <a href="#home" className="footer-logo" data-hover>
-                <span className="bracket">&lt;</span>
-                <span className="name">CIPHEROOT</span>
-                <span className="bracket">/&gt;</span>
-              </a>
-
-              <div className="footer-quote-block">
-                <div className="footer-quote-text">
-                  "{displayed}
-                  {!done && <span className="footer-quote-cursor" />}"
-                </div>
-                {done && (
-                  <div className="footer-quote-author">
-                    — {quotes[quoteIndex].author}
-                  </div>
-                )}
+          <div className="f-row">
+            {/* LEFT */}
+            <div className={`f-left f-reveal ${visible ? "in" : ""}`}>
+              <div className="f-quote-box">
+                <p className="f-quote-text">
+                  "{displayed}{!done && <span className="f-cursor" />}"
+                </p>
               </div>
+              <p className="f-author" style={{ opacity: done ? 1 : 0 }}>
+                — {quotes[quoteIndex].author}
+              </p>
             </div>
 
-            {/* Socials — right */}
-            <div
-              className={`footer-reveal ${visible ? "visible" : ""}`}
-              style={{ textAlign: "right" }}
-            >
-              <div
-                className="footer-socials-label"
-                style={{ textAlign: "right" }}
-              >
-                CONNECT
-              </div>
-              <div className="footer-socials">
-                <div className="footer-socials-row">
-                  {socials.slice(0, 2).map((s) => (
-                    <a
-                      key={s.label}
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="footer-social-link"
-                      aria-label={s.label}
-                      data-hover
-                    >
-                      {s.icon}
-                      {s.label}
-                    </a>
-                  ))}
-                </div>
-                <div className="footer-socials-row">
-                  {socials.slice(2).map((s) => (
-                    <a
-                      key={s.label}
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="footer-social-link"
-                      aria-label={s.label}
-                      data-hover
-                    >
-                      {s.icon}
-                      {s.label}
-                    </a>
-                  ))}
-                </div>
+            {/* RIGHT */}
+            <div className={`f-right f-reveal ${visible ? "in" : ""}`}>
+              <span className="f-connect">Connect</span>
+              <div className="f-links">
+                {socials.map((s) => (
+                  <a key={s.label} href={s.href} target="_blank"
+                    rel="noopener noreferrer" className="f-link"
+                    aria-label={s.label} data-hover>
+                    {s.icon}{s.label}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
 
-          <div className="footer-bottom">
-            <p className="footer-made">
-              built with <span className="heart">♥</span> {" "} tailwind &amp; coffee
-            </p>
+          <div className="f-bottom">
+            built with <span className="f-heart">♥</span> tailwind &amp; coffee
           </div>
         </div>
       </footer>
