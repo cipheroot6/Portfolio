@@ -51,7 +51,7 @@ const projects = [
     gradient: "from-emerald-500/20 to-cyan-500/20",
     icon: "💼",
     github: "https://github.com/cipheroot6/ai-interview",
-    live: "https://ai-interview-cipheroot6s-projects.vercel.app",
+    live: "https://ai-voice-interview-web-application.vercel.app",
   },
   {
     title: "Session Management App",
